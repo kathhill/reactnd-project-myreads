@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Bookcase from './Bookcase';
 import OpenSearchBtn from './OpenSearchBtn';
 
-class ListBooks extends Component {
+class Bookcase extends Component {
 	render() {
 		return (
 			<div className='list-books'>
 				<Header pageTitle='MyReads' />
-				<div className='list-books-content'>
-					<Bookcase />
-				</div>
+				<ul className='list-books-content'>
+					{this.props.books.map(book => (
+						<li key={book.id}>{book.title}</li>
+					))}
+				</ul>
 				<OpenSearchBtn />
 			</div>
 		);
 	}
 }
 
-export default ListBooks;
+export default Bookcase;
