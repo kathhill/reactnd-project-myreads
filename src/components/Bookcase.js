@@ -5,12 +5,19 @@ import OpenSearchBtn from './OpenSearchBtn';
 
 class Bookcase extends Component {
 	render() {
-		//const { bookshelves, books } = this.props;
+		console.log('Props', this.props);
+		const { books, bookshelves } = this.props;
 		return (
 			<div className='list-books'>
 				<Header pageTitle='MyReads' />
 				<ul className='list-books-content'>
-					<Bookshelf />
+					{bookshelves.map(bookshelf => (
+						<Bookshelf
+							key={bookshelf.key}
+							bookshelf={bookshelf}
+							books={books}
+						/>
+					))}
 				</ul>
 				<OpenSearchBtn />
 			</div>

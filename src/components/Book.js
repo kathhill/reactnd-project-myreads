@@ -2,9 +2,9 @@ import React from 'react';
 import BookshelfChanger from './BookshelfChanger';
 
 const Book = props => {
-	const { book } = props;
+	const { book, bookshelf } = props;
 	return (
-		<li key={book.id}>
+		<li key={book.id} bookshelf={bookshelf}>
 			<div className='book'>
 				<div className='book-top'>
 					<div
