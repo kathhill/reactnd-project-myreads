@@ -15,7 +15,7 @@ const Book = props => {
 							backgroundImage: `url(${book.imageLinks.thumbnail})`
 						}}
 					></div>
-					<BookshelfChanger />
+					<BookshelfChanger book={book} bookshelf={bookshelf} />
 				</div>
 				<div className='book-title'>{book.title}</div>
 				<div className='book-authors'>{book.authors}</div>

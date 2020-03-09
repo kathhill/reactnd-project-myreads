@@ -6,7 +6,7 @@ import * as BooksAPI from '../utils/BooksAPI';
 import './App.css';
 
 class BooksApp extends Component {
-	bookshelves = [
+	shelves = [
 		{ key: 'currentlyReading', value: 'Currently Reading' },
 		{ key: 'wantToRead', value: 'Want to Read' },
 		{ key: 'read', value: 'Have Read' }
@@ -31,9 +31,7 @@ class BooksApp extends Component {
 				<Route
 					exact
 					path='/'
-					render={() => (
-						<Bookcase bookshelves={this.bookshelves} books={books} />
-					)}
+					render={() => <Bookcase shelves={this.shelves} books={books} />}
 				/>
 				<Route
 					path='/search-books'
