@@ -24,6 +24,15 @@ class BooksApp extends Component {
 		});
 	};
 
+	handleShelfChange = (book, shelf) => {
+		BooksAPI.update().then((book, shelf) => {
+			book.shelf = shelf;
+			this.setState(prevState => ({
+				books: prevState.books.filter((b => b.id !== book.id).concat([book]))
+			}))
+		})
+	}
+
 	render() {
 		const { books } = this.state;
 		return (
@@ -31,7 +40,7 @@ class BooksApp extends Component {
 				<Route
 					exact
 					path='/'
-					render={() => <Bookcase shelves={this.shelves} books={books} />}
+					render={() => <Bookcase shelves={this.shelves} books={books} handleShelfChange={this.handleShelfChange} />}
 				/>
 				<Route
 					path='/search-books'

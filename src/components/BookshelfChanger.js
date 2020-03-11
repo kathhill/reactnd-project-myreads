@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class BookshelfChanger extends Component {
 	render() {
-		const { book } = this.props;
+		const { book, onChange } = this.props;
 		return (
 			<div className='book-shelf-changer'>
 				<select value={book.shelf}>
