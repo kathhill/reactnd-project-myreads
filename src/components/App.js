@@ -24,14 +24,21 @@ class BooksApp extends Component {
 		});
 	};
 
+	/* compiles successfully, but on change, the following error is thrown: 
+		TypeError: (intermediate value).concat is not a function
+		on page refresh, everything renders with the correct changes displayed
+	*/
+
 	handleShelfChange = (book, shelf) => {
-		BooksAPI.update().then((book, shelf) => {
+		BooksAPI.update(book, shelf).then(response => {
 			book.shelf = shelf;
 			this.setState(prevState => ({
-				books: prevState.books.filter((b => b.id !== book.id).concat([book]))
-			}))
-		})
-	}
+				books: prevState.books
+					.filter((b => b.id !== book.id)
+					.concat([book]))
+			}));
+		});
+	};
 
 	render() {
 		const { books } = this.state;
